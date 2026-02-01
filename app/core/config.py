@@ -1,5 +1,5 @@
 """Application configuration settings."""
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
@@ -9,9 +9,7 @@ class Settings(BaseSettings):
     app_version: str = "1.0.0"
     debug: bool = True
     
-    class Config:
-        """Pydantic configuration."""
-        env_file = ".env"
+    model_config = SettingsConfigDict(env_file=".env")
 
 
 settings = Settings()

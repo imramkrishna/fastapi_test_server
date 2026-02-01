@@ -1,6 +1,6 @@
 """User schemas for request/response validation."""
 from typing import Optional
-from pydantic import BaseModel, Field, EmailStr
+from pydantic import BaseModel, ConfigDict, Field, EmailStr
 
 
 class UserBase(BaseModel):
@@ -19,6 +19,4 @@ class UserResponse(UserBase):
     """Schema for user response."""
     id: int = Field(..., description="User ID")
     
-    class Config:
-        """Pydantic configuration."""
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
